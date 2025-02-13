@@ -17,4 +17,10 @@ public class ApplicationManager {
         primaryStage.setScene(homePage.getScene());
         primaryStage.show();
     }
+
+    public void showLoginPage() {
+        LoginPage loginPage = new LoginPage(this);
+        primaryStage.setScene(loginPage.getScene());
+        primaryStage.show();
+    }
 }

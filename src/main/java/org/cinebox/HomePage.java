@@ -17,7 +17,7 @@ public class HomePage {
         Label welcomeLabel = new Label("Welkom bij FilmApp!");
 
         Button loginButton = new Button("Login");
-//        loginButton.setOnAction(e -> appManager.showLoginPage());
+        loginButton.setOnAction(e -> appManager.showLoginPage());
 
         Button addFilmButton = new Button("Film Toevoegen");
 //        addFilmButton.setOnAction(e -> appManager.showFilmAddPage());

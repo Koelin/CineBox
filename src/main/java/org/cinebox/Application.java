@@ -11,7 +11,9 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
 
 
+
         ApplicationManager appManager = new ApplicationManager(stage);
+
         appManager.showHomePage();
 
     }
