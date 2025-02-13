@@ -6,19 +6,15 @@ import javafx.stage.Stage;
 
 public class ApplicationManager {
 
+    private Stage primaryStage;
 
-    public ApplicationManager() {
+    public ApplicationManager(Stage stage) {
+        this.primaryStage = stage;
     }
 
-    public void run(Stage stage) {
-
-        Pane root = new Pane();
-
-        Scene scene = new Scene(root, 320, 240);
-        stage.setTitle("CineBox");
-        stage.setScene(scene);
-        stage.show();
-
-
+    public void showHomePage() {
+        HomePage homePage = new HomePage(this);
+        primaryStage.setScene(homePage.getScene());
+        primaryStage.show();
     }
 }

@@ -10,16 +10,10 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-//        Pane root = new Pane();
-//
-//        Scene scene = new Scene(root, 320, 240);
-//        stage.setTitle("CineBox");
-//        stage.setScene(scene);
-//        stage.show();
 
+        ApplicationManager appManager = new ApplicationManager(stage);
+        appManager.showHomePage();
 
-        ApplicationManager appManager = new ApplicationManager();
-        appManager.run(stage);
     }
 
     public static void main(String[] args) {
