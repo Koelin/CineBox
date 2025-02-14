@@ -37,7 +37,7 @@ public class LoginPage {
 
         layout.getChildren().addAll(loginLabel, usernameField, passwordField, loginButton, errorLabel, backButton);
         layout.setAlignment(Pos.CENTER);
-        scene = new Scene(layout, 400, 300);
+        scene = new Scene(layout, 1280, 720);
     }
 
     public Scene getScene() {

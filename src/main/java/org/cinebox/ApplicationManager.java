@@ -23,4 +23,10 @@ public class ApplicationManager {
         primaryStage.setScene(loginPage.getScene());
         primaryStage.show();
     }
+
+    public void showFilmAddPage() {
+        AddFilmPage filmAddPage = new AddFilmPage(this);
+        primaryStage.setScene(filmAddPage.getScene());
+        primaryStage.show();
+    }
 }
