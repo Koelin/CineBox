@@ -7,13 +7,16 @@ import javafx.stage.Stage;
 public class ApplicationManager {
 
     private Stage primaryStage;
+    private HomePage homePage;
 
     public ApplicationManager(Stage stage) {
         this.primaryStage = stage;
+        this.homePage = new HomePage(this);
     }
 
     public void showHomePage() {
-        HomePage homePage = new HomePage(this);
+
+        homePage.refreshFilmList();
         primaryStage.setScene(homePage.getScene());
         primaryStage.show();
     }

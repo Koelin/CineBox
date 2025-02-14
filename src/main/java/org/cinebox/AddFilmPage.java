@@ -53,6 +53,8 @@ public class AddFilmPage {
 
             Film film = new Film(title, description, review, director, genre, poster);
             filmRepository.addFilm(film);
+
+            applicationManager.showHomePage();
         });
 
         layout.getChildren().addAll(addFilmLabel, backButton, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, posterField, addFilmButton);

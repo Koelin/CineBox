@@ -14,18 +14,10 @@ public class filmRepository {
 
     }
 
-    public ArrayList<Film> getFilms() {
+    public static ArrayList<Film> getFilms() {
         return films;
     }
 
-    public Film getFilm(int id) {
-        for (Film film : films) {
-            if (film.getId() == id) {
-                return film;
-            }
-        }
-        return null;
-    }
 
 
 }
