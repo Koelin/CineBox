@@ -14,7 +14,7 @@ public class Application extends javafx.application.Application {
 
         ApplicationManager appManager = new ApplicationManager(stage);
 
-        appManager.showHomePage();
+        appManager.showRegisterUserPage();
 
     }
 

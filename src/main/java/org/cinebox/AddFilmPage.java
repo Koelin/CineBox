@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class AddFilmPage {
@@ -52,18 +51,13 @@ public class AddFilmPage {
             String poster = posterField.getText();
 
             Film film = new Film(title, description, review, director, genre, poster);
-            filmRepository.addFilm(film);
+            applicationManager.getLoggedInUser().addFilm(film); // Add film to the logged-in user's list
 
             applicationManager.showHomePage();
         });
 
         layout.getChildren().addAll(addFilmLabel, backButton, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, posterField, addFilmButton);
         layout.setAlignment(javafx.geometry.Pos.CENTER);
-
-
-
-
-
 
         scene = new Scene(layout, 1270, 720);
     }

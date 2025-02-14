@@ -1,21 +1,18 @@
 package org.cinebox;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ApplicationManager {
 
     private Stage primaryStage;
-    private HomePage homePage;
+    private User loggedInUser;
 
     public ApplicationManager(Stage stage) {
         this.primaryStage = stage;
-        this.homePage = new HomePage(this);
     }
 
     public void showHomePage() {
-
+        HomePage homePage = new HomePage(this, loggedInUser);
         homePage.refreshFilmList();
         primaryStage.setScene(homePage.getScene());
         primaryStage.show();
@@ -31,5 +28,19 @@ public class ApplicationManager {
         AddFilmPage filmAddPage = new AddFilmPage(this);
         primaryStage.setScene(filmAddPage.getScene());
         primaryStage.show();
+    }
+
+    public void showRegisterUserPage() {
+        RegisterUserPage registerUserPage = new RegisterUserPage(this);
+        primaryStage.setScene(registerUserPage.getScene());
+        primaryStage.show();
+    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
 }

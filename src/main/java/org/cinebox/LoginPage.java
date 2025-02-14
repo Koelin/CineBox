@@ -1,43 +1,50 @@
 package org.cinebox;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 
 public class LoginPage {
+
     private Scene scene;
 
     public LoginPage(ApplicationManager appManager) {
-        VBox layout = new VBox(10);
+        GridPane layout = new GridPane();
         layout.setPadding(new Insets(20));
+        layout.setVgap(10);
+        layout.setHgap(10);
 
-        Label loginLabel = new Label("Login");
+        Label usernameLabel = new Label("Username:");
         TextField usernameField = new TextField();
-        usernameField.setPromptText("Gebruikersnaam");
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("Wachtwoord");
 
-        Label errorLabel = new Label();
+        Label passwordLabel = new Label("Password:");
+        TextField passwordField = new TextField();
 
         Button loginButton = new Button("Login");
         loginButton.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
-
-
+            User user = UserRepository.getUser(username);
+            if (user != null && user.getPassword().equals(password)) {
+                appManager.setLoggedInUser(user);
+                appManager.showHomePage();
+            } else {
+                Label errorLabel = new Label("Invalid username or password");
+                layout.add(errorLabel, 1, 3);
+            }
         });
 
-        Button backButton = new Button("Terug naar Home");
-        backButton.setOnAction(e -> appManager.showHomePage());
+        layout.add(usernameLabel, 0, 0);
+        layout.add(usernameField, 1, 0);
+        layout.add(passwordLabel, 0, 1);
+        layout.add(passwordField, 1, 1);
+        layout.add(loginButton, 1, 2);
 
-        layout.getChildren().addAll(loginLabel, usernameField, passwordField, loginButton, errorLabel, backButton);
-        layout.setAlignment(Pos.CENTER);
-        scene = new Scene(layout, 1280, 720);
+
+        scene = new Scene(layout, 400, 300);
     }
 
     public Scene getScene() {
