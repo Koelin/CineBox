@@ -1,7 +1,8 @@
 package org.cinebox;
 
-public class Film {
+import javafx.scene.image.Image;
 
+public class Film {
     private int id;
     private String title;
     private String description;
@@ -9,9 +10,9 @@ public class Film {
     private String director;
     private int genreId;
     private int userId;
-    private String poster;
+    private Image poster;
 
-    public Film(int id, String title, String description, String review, String director, int genreId, int userId, String poster) {
+    public Film(int id, String title, String description, String review, String director, int genreId, int userId, Image poster) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -22,21 +23,13 @@ public class Film {
         this.poster = poster;
     }
 
-    public Film(String title, String description, String review, String director, int genreId, int userId, String poster) {
+    public Film(String title, String description, String review, String director, int genreId, int userId, Image poster) {
         this.title = title;
         this.description = description;
         this.review = review;
         this.director = director;
         this.genreId = genreId;
         this.userId = userId;
-        this.poster = poster;
-    }
-
-    public Film(String title, String description, String review, String director, String poster) {
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
         this.poster = poster;
     }
 
@@ -68,7 +61,7 @@ public class Film {
         return userId;
     }
 
-    public String getPoster() {
+    public Image getPoster() {
         return poster;
     }
 }

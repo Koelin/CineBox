@@ -7,11 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class RegisterUserPage {
-
     private Scene scene;
 
     public RegisterUserPage(ApplicationManager appManager) {
-
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
 
@@ -27,28 +25,18 @@ public class RegisterUserPage {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            User user = new User(1,username, password);
+            User user = new User(1, username, password);
             UserRepository.addUser(user);
 
             appManager.setLoggedInUser(user);
             appManager.showHomePage();
         });
 
-
-
         layout.getChildren().addAll(usernameField, passwordField, registerButton);
         scene = new Scene(layout, 1280, 720);
-
     }
 
     public Scene getScene() {
         return scene;
     }
-
-
-
-
-
-
-
 }
