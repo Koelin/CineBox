@@ -27,7 +27,7 @@ public class RegisterUserPage {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            User user = new User(username, password);
+            User user = new User(1,username, password);
             UserRepository.addUser(user);
 
             appManager.setLoggedInUser(user);

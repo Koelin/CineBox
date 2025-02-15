@@ -8,6 +8,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class AddFilmPage {
     private Scene scene;
 
@@ -50,8 +55,12 @@ public class AddFilmPage {
             String review = reviewTextArea.getText();
             String poster = posterField.getText();
 
-            Film film = new Film(title, description, review, director, genre, poster);
-            applicationManager.getLoggedInUser().addFilm(film); // Add film to the logged-in user's list
+            User loggedInUser = applicationManager.getLoggedInUser();
+
+
+
+            Film film = new Film(title, description, review, director, poster);
+
 
             applicationManager.showHomePage();
         });
@@ -65,4 +74,9 @@ public class AddFilmPage {
     public Scene getScene() {
         return scene;
     }
+
+
+
+
+
 }
