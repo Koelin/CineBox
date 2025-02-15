@@ -3,37 +3,35 @@ package org.cinebox;
 import javafx.stage.Stage;
 
 public class ApplicationManager {
-
-    private Stage primaryStage;
+    private Stage stage;
     private User loggedInUser;
 
     public ApplicationManager(Stage stage) {
-        this.primaryStage = stage;
-    }
-
-    public void showHomePage() {
-        HomePage homePage = new HomePage(this, loggedInUser);
-        homePage.refreshFilmList();
-        primaryStage.setScene(homePage.getScene());
-        primaryStage.show();
-    }
-
-    public void showLoginPage() {
-        LoginPage loginPage = new LoginPage(this);
-        primaryStage.setScene(loginPage.getScene());
-        primaryStage.show();
-    }
-
-    public void showFilmAddPage() {
-        AddFilmPage filmAddPage = new AddFilmPage(this);
-        primaryStage.setScene(filmAddPage.getScene());
-        primaryStage.show();
+        this.stage = stage;
     }
 
     public void showRegisterUserPage() {
         RegisterUserPage registerUserPage = new RegisterUserPage(this);
-        primaryStage.setScene(registerUserPage.getScene());
-        primaryStage.show();
+        stage.setScene(registerUserPage.getScene());
+        stage.show();
+    }
+
+    public void showHomePage() {
+        HomePage homePage = new HomePage(this);
+        stage.setScene(homePage.getScene());
+        stage.show();
+    }
+
+    public void showAddFilmPage() {
+        AddFilmPage addFilmPage = new AddFilmPage(this);
+        stage.setScene(addFilmPage.getScene());
+        stage.show();
+    }
+
+    public void showLoginPage() {
+        LoginPage loginPage = new LoginPage(this);
+        stage.setScene(loginPage.getScene());
+        stage.show();
     }
 
     public void setLoggedInUser(User user) {
@@ -42,5 +40,9 @@ public class ApplicationManager {
 
     public User getLoggedInUser() {
         return loggedInUser;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }
