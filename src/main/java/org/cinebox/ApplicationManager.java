@@ -34,6 +34,12 @@ public class ApplicationManager {
         stage.show();
     }
 
+    public void showDetailPage(Film film) {
+        DetailPage detailPage = new DetailPage(this, film);
+        stage.setScene(detailPage.getScene());
+        stage.show();
+    }
+
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
     }

@@ -32,17 +32,16 @@ public class HomePage {
         User loggedInUser = applicationManager.getLoggedInUser();
         for (Film film : loggedInUser.getFilms()) {
             Label filmLabel = new Label(film.getTitle());
-            Label directorLabel = new Label(film.getDirector());
-            Label reviewLabel = new Label(film.getReview());
             Image poster = film.getPoster();
             ImageView posterImageView = new ImageView(poster);
             posterImageView.setFitWidth(200);
             posterImageView.setFitHeight(300);
             posterImageView.setPreserveRatio(true);
 
-            layout.getChildren().addAll(posterImageView, filmLabel, directorLabel, reviewLabel);
+            Button detailButton = new Button("View Details");
+            detailButton.setOnAction(e -> applicationManager.showDetailPage(film));
 
-
+            layout.getChildren().addAll(posterImageView, filmLabel, detailButton);
         }
 
         scene = new Scene(layout, 1270, 720);

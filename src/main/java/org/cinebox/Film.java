@@ -14,7 +14,7 @@ public class Film {
     private String genre;
     private String rating;
 
-    public Film(int id, String title, String description, String review, String director, int genreId, int userId, Image poster) {
+    public Film(int id, String title, String description, String review, String director, int genreId, int userId, String poster, String genre, String rating) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -22,19 +22,10 @@ public class Film {
         this.director = director;
         this.genreId = genreId;
         this.userId = userId;
-        this.poster = poster;
+        this.poster = new Image(poster);
+        this.genre = genre;
+        this.rating = rating;
     }
-
-    public Film(String title, String description, String review, String director, int genreId, int userId, Image poster) {
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = poster;
-    }
-
 
     public Film(String title, String description, String review, String director, int genreId, int userId, Image poster, String genre, String rating) {
         this.title = title;
@@ -44,6 +35,8 @@ public class Film {
         this.genreId = genreId;
         this.userId = userId;
         this.poster = poster;
+        this.genre = genre;
+        this.rating = rating;
     }
 
     public int getId() {
@@ -85,6 +78,4 @@ public class Film {
     public String getRating() {
         return rating;
     }
-
-
 }
