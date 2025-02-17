@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
+
 public class HomePage {
     private Scene scene;
 
@@ -30,13 +32,18 @@ public class HomePage {
         layout.getChildren().addAll(addFilmButton, registerButton, loginButton);
 
         User loggedInUser = applicationManager.getLoggedInUser();
-        for (Film film : loggedInUser.getFilms()) {
+        List<Film> films = FilmRepository.getFilmsByUser(loggedInUser.getId());
+
+        for (Film film : films) {
             Label filmLabel = new Label(film.getTitle());
             Image poster = film.getPoster();
-            ImageView posterImageView = new ImageView(poster);
-            posterImageView.setFitWidth(200);
-            posterImageView.setFitHeight(300);
-            posterImageView.setPreserveRatio(true);
+            ImageView posterImageView = new ImageView();
+            if (poster != null) {
+                posterImageView.setImage(poster);
+                posterImageView.setFitWidth(200);
+                posterImageView.setFitHeight(300);
+                posterImageView.setPreserveRatio(true);
+            }
 
             Button detailButton = new Button("View Details");
             detailButton.setOnAction(e -> applicationManager.showDetailPage(film));

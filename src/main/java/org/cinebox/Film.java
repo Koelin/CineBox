@@ -66,6 +66,32 @@ public class Film {
         this.rating = rating;
     }
 
+
+    public Film(String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre) {
+        this.title = title;
+        this.description = description;
+        this.director = director;
+        this.genreId = genreId;
+        this.userId = userId;
+        this.poster = new Image(new ByteArrayInputStream(posterBytes));
+        this.genre = genre;
+    }
+
+    public Film(int id, String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.director = director;
+        this.genreId = genreId;
+        this.userId = userId;
+        this.genre = genre;
+        if (posterBytes != null) {
+            this.poster = new Image(new ByteArrayInputStream(posterBytes));
+        } else {
+            this.poster = null;
+        }
+    }
+
     public int getId() {
         return id;
     }

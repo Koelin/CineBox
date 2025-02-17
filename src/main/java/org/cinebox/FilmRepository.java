@@ -26,7 +26,10 @@ public class FilmRepository {
 
     public static List<Film> getFilmsByUser(int userId) {
         List<Film> films = new ArrayList<>();
-        String sql = "SELECT * FROM Film WHERE user_id = ?";
+        String sql = "SELECT f.id, f.title, f.description, f.director, f.genre_id, f.user_id, f.poster, g.name AS genre " +
+                "FROM Film f " +
+                "JOIN Genre g ON f.genre_id = g.id " +
+                "WHERE f.user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);
@@ -36,13 +39,11 @@ public class FilmRepository {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("description"),
-                        rs.getString("review"),
                         rs.getString("director"),
                         rs.getInt("genre_id"),
                         rs.getInt("user_id"),
                         rs.getBytes("poster"),
-                        rs.getString("genre"),
-                        rs.getString("rating")
+                        rs.getString("genre")
                 ));
             }
         } catch (SQLException e) {

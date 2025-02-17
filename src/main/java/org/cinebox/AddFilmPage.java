@@ -82,11 +82,31 @@ public class AddFilmPage {
                 }
             }
 
+            if (posterBytes == null) {
+                // Handle the case where the image is not selected or failed to convert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Image Error");
+                alert.setContentText("Failed to load the image. Please select a valid image file.");
+                alert.showAndWait();
+                return;
+            }
+
             User loggedInUser = applicationManager.getLoggedInUser();
             int userId = loggedInUser.getId();
-            int genreId = 0; // You need to fetch the genreId from the database based on the genre name
+            int genreId = GenreRepository.getGenreIdByName(genre);
 
-            Film film = new Film(title, description, review, director, genreId, userId, posterBytes, genre, rating);
+            if (genreId == 0) {
+                // Handle the case where the genre is not found
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid Genre");
+                alert.setContentText("The specified genre does not exist.");
+                alert.showAndWait();
+                return;
+            }
+
+            Film film = new Film(title, description, director, genreId, userId, posterBytes, genre);
             FilmRepository.addFilm(film);
 
             applicationManager.showHomePage();
