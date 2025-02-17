@@ -41,7 +41,10 @@ public class HomePage {
             Button detailButton = new Button("View Details");
             detailButton.setOnAction(e -> applicationManager.showDetailPage(film));
 
-            layout.getChildren().addAll(posterImageView, filmLabel, detailButton);
+            Button editButton = new Button("Edit Film");
+            editButton.setOnAction(e -> applicationManager.showEditFilmPage(film));
+
+            layout.getChildren().addAll(posterImageView, filmLabel, detailButton, editButton);
         }
 
         scene = new Scene(layout, 1270, 720);

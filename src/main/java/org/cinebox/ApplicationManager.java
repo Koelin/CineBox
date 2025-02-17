@@ -40,6 +40,12 @@ public class ApplicationManager {
         stage.show();
     }
 
+    public void showEditFilmPage(Film film) {
+        EditFilmPage editFilmPage = new EditFilmPage(this, film);
+        stage.setScene(editFilmPage.getScene());
+        stage.show();
+    }
+
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
     }

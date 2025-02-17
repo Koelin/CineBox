@@ -78,4 +78,44 @@ public class Film {
     public String getRating() {
         return rating;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setPoster(Image poster) {
+        this.poster = poster;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 }
