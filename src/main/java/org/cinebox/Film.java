@@ -14,70 +14,9 @@ public class Film {
     private int userId;
     private Image poster;
     private String genre;
-    private String rating;
+    private int rating;
 
-    public Film(int id, String title, String description, String review, String director, int genreId, int userId, String poster, String genre, String rating) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = new Image(poster);
-        this.genre = genre;
-        this.rating = rating;
-    }
-
-    public Film(String title, String description, String review, String director, int genreId, int userId, Image poster, String genre, String rating) {
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = poster;
-        this.genre = genre;
-        this.rating = rating;
-    }
-
-    public Film(int id, String title, String description, String review, String director, int genreId, int userId, byte[] posterBytes, String genre, String rating) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = new Image(new ByteArrayInputStream(posterBytes));
-        this.genre = genre;
-        this.rating = rating;
-    }
-
-    public Film(String title, String description, String review, String director, int genreId, int userId, byte[] posterBytes, String genre, String rating) {
-        this.title = title;
-        this.description = description;
-        this.review = review;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = new Image(new ByteArrayInputStream(posterBytes));
-        this.genre = genre;
-        this.rating = rating;
-    }
-
-
-    public Film(String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre) {
-        this.title = title;
-        this.description = description;
-        this.director = director;
-        this.genreId = genreId;
-        this.userId = userId;
-        this.poster = new Image(new ByteArrayInputStream(posterBytes));
-        this.genre = genre;
-    }
-
-    public Film(int id, String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre) {
+    public Film(int id, String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre, String review, int rating) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -85,6 +24,25 @@ public class Film {
         this.genreId = genreId;
         this.userId = userId;
         this.genre = genre;
+        this.review = review;
+        this.rating = rating;
+        if (posterBytes != null) {
+            this.poster = new Image(new ByteArrayInputStream(posterBytes));
+        } else {
+            this.poster = null;
+        }
+    }
+
+
+    public Film(String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre, String review, Integer rating) {
+        this.title = title;
+        this.description = description;
+        this.director = director;
+        this.genreId = genreId;
+        this.userId = userId;
+        this.genre = genre;
+        this.review = review;
+        this.rating = rating;
         if (posterBytes != null) {
             this.poster = new Image(new ByteArrayInputStream(posterBytes));
         } else {
@@ -128,7 +86,7 @@ public class Film {
         return genre;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
@@ -168,7 +126,7 @@ public class Film {
         this.genre = genre;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

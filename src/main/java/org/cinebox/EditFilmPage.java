@@ -32,7 +32,7 @@ public class EditFilmPage {
         TextField genreField = new TextField(film.getGenre());
         TextField directorField = new TextField(film.getDirector());
         TextArea reviewTextArea = new TextArea(film.getReview());
-        TextField ratingField = new TextField(film.getRating());
+        TextField ratingField = new TextField(String.valueOf(film.getRating()));
 
         posterImageView = new ImageView(film.getPoster());
         posterImageView.setFitWidth(200);
@@ -57,12 +57,14 @@ public class EditFilmPage {
             film.setGenre(genreField.getText());
             film.setDirector(directorField.getText());
             film.setReview(reviewTextArea.getText());
-            film.setRating(ratingField.getText());
+            film.setRating(Integer.parseInt(ratingField.getText()));
             if (selectedImageFile != null) {
                 film.setPoster(new Image(selectedImageFile.toURI().toString()));
             }
 
             applicationManager.showHomePage();
+
+            FilmRepository.editFilm(film);
         });
 
         layout.getChildren().addAll(editFilmLabel, backButton, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, selectImageButton, posterImageView, saveFilmButton);

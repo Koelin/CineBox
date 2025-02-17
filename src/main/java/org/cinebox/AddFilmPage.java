@@ -47,6 +47,8 @@ public class AddFilmPage {
         posterImageView.setFitHeight(300);
         posterImageView.setPreserveRatio(true);
 
+        backButton.setOnAction(e -> applicationManager.showHomePage());
+
         Button selectImageButton = new Button("Selecteer Afbeelding");
         selectImageButton.setOnAction(e -> {
             FileChooser fileChooser = new FileChooser();
@@ -62,7 +64,7 @@ public class AddFilmPage {
         addFilmButton.setOnAction(e -> {
             String title = titleField.getText();
             String description = descriptionField.getText();
-            String rating = ratingField.getValue();
+            Integer rating = Integer.parseInt(ratingField.getValue());
             String genre = genreField.getText();
             String director = directorField.getText();
             String review = reviewTextArea.getText();
@@ -93,6 +95,16 @@ public class AddFilmPage {
             }
 
             User loggedInUser = applicationManager.getLoggedInUser();
+            if (loggedInUser == null) {
+                // Handle the case where the user is not logged in
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("User Error");
+                alert.setContentText("No user is logged in. Please log in and try again.");
+                alert.showAndWait();
+                return;
+            }
+
             int userId = loggedInUser.getId();
             int genreId = GenreRepository.getGenreIdByName(genre);
 
@@ -106,7 +118,7 @@ public class AddFilmPage {
                 return;
             }
 
-            Film film = new Film(title, description, director, genreId, userId, posterBytes, genre);
+            Film film = new Film(title, description, director, genreId, userId, posterBytes, genre, review, rating);
             FilmRepository.addFilm(film);
 
             applicationManager.showHomePage();
