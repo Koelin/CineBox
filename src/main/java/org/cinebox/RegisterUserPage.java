@@ -21,6 +21,10 @@ public class RegisterUserPage {
 
         Button registerButton = new Button("Registreren");
 
+        Button inlogButton = new Button("Inloggen");
+
+        inlogButton.setOnAction(e -> appManager.showLoginPage());
+
         registerButton.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
@@ -32,7 +36,7 @@ public class RegisterUserPage {
             appManager.showHomePage();
         });
 
-        layout.getChildren().addAll(usernameField, passwordField, registerButton);
+        layout.getChildren().addAll(usernameField, passwordField, registerButton, inlogButton);
         scene = new Scene(layout, 1280, 720);
     }
 

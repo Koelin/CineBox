@@ -8,7 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class AddFilmPage {
     private Scene scene;
@@ -63,14 +66,28 @@ public class AddFilmPage {
             String genre = genreField.getText();
             String director = directorField.getText();
             String review = reviewTextArea.getText();
-            Image poster = posterImageView.getImage();
+            byte[] posterBytes = null;
+
+            if (selectedImageFile != null) {
+                try (FileInputStream fis = new FileInputStream(selectedImageFile);
+                     ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = fis.read(buffer)) != -1) {
+                        bos.write(buffer, 0, bytesRead);
+                    }
+                    posterBytes = bos.toByteArray();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
 
             User loggedInUser = applicationManager.getLoggedInUser();
             int userId = loggedInUser.getId();
-            int genreId = 0;
+            int genreId = 0; // You need to fetch the genreId from the database based on the genre name
 
-            Film film = new Film(title, description, review, director, genreId, userId, poster, genre, rating);
-            loggedInUser.addFilm(film);
+            Film film = new Film(title, description, review, director, genreId, userId, posterBytes, genre, rating);
+            FilmRepository.addFilm(film);
 
             applicationManager.showHomePage();
         });

@@ -2,6 +2,8 @@ package org.cinebox;
 
 import javafx.scene.image.Image;
 
+import java.io.ByteArrayInputStream;
+
 public class Film {
     private int id;
     private String title;
@@ -35,6 +37,31 @@ public class Film {
         this.genreId = genreId;
         this.userId = userId;
         this.poster = poster;
+        this.genre = genre;
+        this.rating = rating;
+    }
+
+    public Film(int id, String title, String description, String review, String director, int genreId, int userId, byte[] posterBytes, String genre, String rating) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.review = review;
+        this.director = director;
+        this.genreId = genreId;
+        this.userId = userId;
+        this.poster = new Image(new ByteArrayInputStream(posterBytes));
+        this.genre = genre;
+        this.rating = rating;
+    }
+
+    public Film(String title, String description, String review, String director, int genreId, int userId, byte[] posterBytes, String genre, String rating) {
+        this.title = title;
+        this.description = description;
+        this.review = review;
+        this.director = director;
+        this.genreId = genreId;
+        this.userId = userId;
+        this.poster = new Image(new ByteArrayInputStream(posterBytes));
         this.genre = genre;
         this.rating = rating;
     }
@@ -117,5 +144,9 @@ public class Film {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public byte[] getPosterBytes() {
+        return null;
     }
 }
