@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 public class AddFilmPage {
     private Scene scene;
@@ -126,6 +127,7 @@ public class AddFilmPage {
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
         scene = new Scene(layout, 1270, 720);
+
     }
 
     public Scene getScene() {
