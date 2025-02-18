@@ -1,8 +1,13 @@
 package org.cinebox;
 
 import javafx.scene.image.Image;
+import javafx.embed.swing.SwingFXUtils;
 
+import javax.imageio.ImageIO;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 
 public class Film {
     private int id;
@@ -34,6 +39,7 @@ public class Film {
     }
 
 
+
     public Film(String title, String description, String director, int genreId, int userId, byte[] posterBytes, String genre, String review, Integer rating) {
         this.title = title;
         this.description = description;
@@ -49,6 +55,22 @@ public class Film {
             this.poster = null;
         }
     }
+
+
+
+    public byte[] getPosterBytes() {
+        if (poster != null) {
+            try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+                ImageIO.write(SwingFXUtils.fromFXImage(poster, null), "png", bos);
+                return bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
 
     public int getId() {
         return id;
@@ -130,7 +152,5 @@ public class Film {
         this.rating = rating;
     }
 
-    public byte[] getPosterBytes() {
-        return null;
-    }
+
 }

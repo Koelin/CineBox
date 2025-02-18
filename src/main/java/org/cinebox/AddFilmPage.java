@@ -70,10 +70,11 @@ public class AddFilmPage {
             String review = reviewTextArea.getText();
             byte[] posterBytes = null;
 
+            // Convert the selected image file to a byte array
             if (selectedImageFile != null) {
                 try (FileInputStream fis = new FileInputStream(selectedImageFile);
                      ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[1024]; // 1 KB
                     int bytesRead;
                     while ((bytesRead = fis.read(buffer)) != -1) {
                         bos.write(buffer, 0, bytesRead);
@@ -85,7 +86,6 @@ public class AddFilmPage {
             }
 
             if (posterBytes == null) {
-                // Handle the case where the image is not selected or failed to convert
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Image Error");
@@ -96,7 +96,6 @@ public class AddFilmPage {
 
             User loggedInUser = applicationManager.getLoggedInUser();
             if (loggedInUser == null) {
-                // Handle the case where the user is not logged in
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("User Error");
@@ -109,7 +108,6 @@ public class AddFilmPage {
             int genreId = GenreRepository.getGenreIdByName(genre);
 
             if (genreId == 0) {
-                // Handle the case where the genre is not found
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Invalid Genre");

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilmRepository {
+
     public static void addFilm(Film film) {
         String sql = "INSERT INTO Film (title, description, director, genre_id, user_id, poster, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -17,7 +18,7 @@ public class FilmRepository {
             stmt.setString(3, film.getDirector());
             stmt.setInt(4, film.getGenreId());
             stmt.setInt(5, film.getUserId());
-            stmt.setBytes(6, film.getPosterBytes()); // Convert Image to byte array
+            stmt.setBytes(6, film.getPosterBytes());
             stmt.setInt(7, film.getRating());
             stmt.executeUpdate();
 
@@ -32,6 +33,8 @@ public class FilmRepository {
             e.printStackTrace();
         }
     }
+
+
 
     private static int getLastInsertedFilmId(Connection conn) throws SQLException {
         String sql = "SELECT LAST_INSERT_ID()";

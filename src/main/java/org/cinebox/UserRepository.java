@@ -14,8 +14,6 @@
 //        return users.get(username);
 //    }
 //}
-
-
 package org.cinebox;
 
 import java.sql.Connection;
