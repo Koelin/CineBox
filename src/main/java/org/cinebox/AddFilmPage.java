@@ -31,8 +31,11 @@ public class AddFilmPage {
         TextField descriptionField = new TextField();
         descriptionField.setPromptText("Beschrijving");
 
-        TextField genreField = new TextField();
-        genreField.setPromptText("Genre");
+
+        ChoiceBox<String> genreField = new ChoiceBox<>();
+        genreField.getItems().addAll("Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Fantasy",
+                                           "Historical", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "Western");
+        genreField.setValue("Action");
 
         TextField directorField = new TextField();
         directorField.setPromptText("Regisseur");
@@ -42,6 +45,7 @@ public class AddFilmPage {
 
         ChoiceBox<String> ratingField = new ChoiceBox<>();
         ratingField.getItems().addAll("1", "2", "3", "4", "5");
+        ratingField.setValue("1");
 
         posterImageView = new ImageView();
         posterImageView.setFitWidth(200);
@@ -66,7 +70,7 @@ public class AddFilmPage {
             String title = titleField.getText();
             String description = descriptionField.getText();
             Integer rating = Integer.parseInt(ratingField.getValue());
-            String genre = genreField.getText();
+            String genre = genreField.getValue();
             String director = directorField.getText();
             String review = reviewTextArea.getText();
             byte[] posterBytes = null;

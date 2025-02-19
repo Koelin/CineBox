@@ -1,8 +1,9 @@
 /* styles.css */
 .root {
-    -fx-background-color: #f0f0f0;
+    -fx-background-color: #ae8282;
 }
 
+/* HomePAge styling */
 .label-title {
     -fx-font-family: Arial;
     -fx-font-weight: bold;
@@ -68,3 +69,43 @@
     -fx-text-fill: white;
     -fx-font-size: 12px;
 }
+
+/* FilmDetailPage styling */
+
+.label-detail-title {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-text-fill: #333333;
+}
+
+.label-detail-director {
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-text-fill: #666666;
+}
+
+.label-detail-description {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+}
+
+.poster-image-detail {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.5, 0, 0);
+
+}
+
+.button-back {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-delete {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* AddFilmPage styling */

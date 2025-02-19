@@ -23,6 +23,7 @@ public class EditFilmPage {
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
 
+
         Label editFilmLabel = new Label("Film Bewerken");
         Button backButton = new Button("Terug naar Home");
         backButton.setOnAction(e -> applicationManager.showHomePage());
@@ -71,6 +72,7 @@ public class EditFilmPage {
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
         scene = new Scene(layout, 1270, 720);
+        scene.getStylesheets().add(getClass().getResource("/Styles.css").toExternalForm());
     }
 
     public Scene getScene() {
