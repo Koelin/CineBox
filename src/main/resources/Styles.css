@@ -1,6 +1,6 @@
 /* styles.css */
 .root {
-    -fx-background-color: #ae8282;
+    -fx-background-color: #403f3f;
 }
 
 /* HomePAge styling */
@@ -108,4 +108,159 @@
     -fx-font-size: 14px;
 }
 
+/* LoginPage styling */
+.label-login-title {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 70px;
+    -fx-text-fill: #ffffff;
+}
+
+.label-username, .label-password {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+
+.textfield-username, .textfield-password {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+}
+
+.textfield-username:focused, .textfield-password:focused {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: #f0f0f0;
+    -fx-background-color: transparent;
+}
+
+.textfield-username:hover, .textfield-password:hover {
+    -fx-border-color: #4CAF50;
+}
+
+.button-submit {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-submit:hover {
+    -fx-background-color: #45a049;
+}
+
+/* RegisterPage styling */
+.label-register-title {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 70px;
+    -fx-text-fill: #ffffff;
+
+}
+
+.label-register-username, .label-register-password {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+.textfield-register-username, .textfield-register-password {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.textfield-register-username:focused, .textfield-register-password:focused {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: #f0f0f0;
+}
+
+.textfield-register-username:hover, .textfield-register-password:hover {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: transparent;
+}
+
+.button-register-submit {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-register-submit:hover {
+    -fx-background-color: #45a049;
+}
+
 /* AddFilmPage styling */
+
+.label-add-film-title {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 28px;
+    -fx-text-fill: #ffffff;
+}
+
+
+.label-add-film-director, .label-add-film-description {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+.textfield-add-film-title, .textfield-add-film-director, .textfield-add-film-description {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+}
+
+.text-area-add-film-description {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-max-height: 100px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.textfield-add-film-title:focused, .textfield-add-film-director:focused, .textfield-add-film-description:focused {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: transparent;
+
+
+}
+
+.textfield-add-film-title:hover, .textfield-add-film-director:hover, .textfield-add-film-description:hover {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: transparent;
+}
+
+.button-add-film-submit {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-add-film-submit:hover {
+    -fx-background-color: #45a049;
+}
+
+/* EditFilmPage styling */

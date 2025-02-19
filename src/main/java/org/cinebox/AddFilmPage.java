@@ -22,14 +22,21 @@ public class AddFilmPage {
     public AddFilmPage(ApplicationManager applicationManager) {
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
+        layout.getStyleClass().add("root");
 
-        Label addFilmLabel = new Label("Film Toevoegen");
+        Label addFilmLabel = new Label("Add Film");
+        addFilmLabel.getStyleClass().add("label-add-film-title");
+
         Button backButton = new Button("Terug naar Home");
+        backButton.getStyleClass().add("button-submit");
+
         TextField titleField = new TextField();
         titleField.setPromptText("Titel");
+        titleField.getStyleClass().add("textfield-add-film-title");
 
         TextField descriptionField = new TextField();
         descriptionField.setPromptText("Beschrijving");
+        descriptionField.getStyleClass().add("textfield-add-film-description");
 
 
         ChoiceBox<String> genreField = new ChoiceBox<>();
@@ -39,9 +46,11 @@ public class AddFilmPage {
 
         TextField directorField = new TextField();
         directorField.setPromptText("Regisseur");
+        directorField.getStyleClass().add("textfield-add-film-director");
 
         TextArea reviewTextArea = new TextArea();
         reviewTextArea.setPromptText("Review");
+        reviewTextArea.getStyleClass().add("text-area-add-film-description");
 
         ChoiceBox<String> ratingField = new ChoiceBox<>();
         ratingField.getItems().addAll("1", "2", "3", "4", "5");
@@ -55,6 +64,7 @@ public class AddFilmPage {
         backButton.setOnAction(e -> applicationManager.showHomePage());
 
         Button selectImageButton = new Button("Selecteer Afbeelding");
+        selectImageButton.getStyleClass().add("button-submit");
         selectImageButton.setOnAction(e -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
@@ -66,6 +76,7 @@ public class AddFilmPage {
         });
 
         Button addFilmButton = new Button("Film Toevoegen");
+        addFilmButton.getStyleClass().add("button-submit");
         addFilmButton.setOnAction(e -> {
             String title = titleField.getText();
             String description = descriptionField.getText();
@@ -127,10 +138,11 @@ public class AddFilmPage {
             applicationManager.showHomePage();
         });
 
-        layout.getChildren().addAll(addFilmLabel, backButton, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, selectImageButton, posterImageView, addFilmButton);
+        layout.getChildren().addAll(addFilmLabel, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, selectImageButton, posterImageView, addFilmButton,backButton);
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
         scene = new Scene(layout, 1270, 720);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
 
     }
 

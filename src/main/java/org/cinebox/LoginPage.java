@@ -1,29 +1,44 @@
 package org.cinebox;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class LoginPage {
 
     private Scene scene;
 
     public LoginPage(ApplicationManager appManager) {
-        GridPane layout = new GridPane();
+        VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
-        layout.setVgap(10);
-        layout.setHgap(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.getStyleClass().add("root");
+
+        Label loginLabel = new Label("Login");
+        loginLabel.getStyleClass().add("label-login-title");
 
         Label usernameLabel = new Label("Username:");
+        usernameLabel.getStyleClass().add("label-username");
+
         TextField usernameField = new TextField();
 
+        usernameField.getStyleClass().add("textfield-username");
+
         Label passwordLabel = new Label("Password:");
-        TextField passwordField = new TextField();
+        passwordLabel.getStyleClass().add("label-password");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.getStyleClass().add("textfield-password");
+
 
         Button loginButton = new Button("Login");
+        loginButton.getStyleClass().add("button-submit");
         loginButton.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
@@ -33,18 +48,15 @@ public class LoginPage {
                 appManager.showHomePage();
             } else {
                 Label errorLabel = new Label("Invalid username or password");
-                layout.add(errorLabel, 1, 3);
+                layout.getChildren().add(errorLabel);
             }
         });
 
-        layout.add(usernameLabel, 0, 0);
-        layout.add(usernameField, 1, 0);
-        layout.add(passwordLabel, 0, 1);
-        layout.add(passwordField, 1, 1);
-        layout.add(loginButton, 1, 2);
+layout.getChildren().addAll(loginLabel, usernameLabel, usernameField, passwordLabel, passwordField, loginButton);
 
 
-        scene = new Scene(layout, 400, 300);
+        scene = new Scene(layout, 1280, 720);
+        scene.getStylesheets().add(getClass().getResource("/Styles.css").toExternalForm());
     }
 
     public Scene getScene() {
