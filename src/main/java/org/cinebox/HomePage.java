@@ -10,7 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
-import java.util.Objects;
 
 public class HomePage {
     private Scene scene;
@@ -20,11 +19,9 @@ public class HomePage {
         mainLayout.setPadding(new Insets(20));
         mainLayout.getStyleClass().add("root");
 
-
-        Label homeLabel = new Label("Welkom bij Cinebox! " + applicationManager.getLoggedInUser().getUsername());
+        Label homeLabel = new Label("Welcome" + applicationManager.getLoggedInUser().getUsername() + "to Cinebox" );
         homeLabel.getStyleClass().add("label-title");
         mainLayout.getChildren().add(homeLabel);
-
 
         Button registerButton = new Button("Registreren");
         registerButton.getStyleClass().add("button-register");
@@ -49,7 +46,6 @@ public class HomePage {
         filmRow.setPadding(new Insets(10));
         filmRow.getStyleClass().add("film-row");
 
-
         for (Film film : films) {
             VBox filmBox = new VBox(10);
             filmBox.setPadding(new Insets(10));
@@ -68,10 +64,8 @@ public class HomePage {
             Label filmTitleLabel = new Label(film.getTitle());
             filmTitleLabel.getStyleClass().add("label-film-title");
 
-
             Label filmDirectorLabel = new Label(film.getDirector());
             filmDirectorLabel.getStyleClass().add("label-film-director");
-
 
             Button detailButton = new Button("View Details");
             detailButton.getStyleClass().add("button-detail");
@@ -81,7 +75,14 @@ public class HomePage {
             editButton.getStyleClass().add("button-edit");
             editButton.setOnAction(e -> applicationManager.showEditFilmPage(film));
 
-            filmBox.getChildren().addAll(posterImageView, filmTitleLabel, filmDirectorLabel, detailButton, editButton);
+            Button deleteButton = new Button("Delete Film");
+            deleteButton.getStyleClass().add("button-delete");
+            deleteButton.setOnAction(e -> {
+                FilmRepository.deleteFilm(film.getId());
+                applicationManager.showHomePage(); // Refresh the page
+            });
+
+            filmBox.getChildren().addAll(posterImageView, filmTitleLabel, filmDirectorLabel, detailButton, editButton, deleteButton);
             filmRow.getChildren().add(filmBox);
 
             if (filmRow.getChildren().size() == 3) { // Adjust the number of films per row as needed
@@ -96,10 +97,8 @@ public class HomePage {
             mainLayout.getChildren().add(filmRow);
         }
 
-        scene = new Scene(mainLayout, 1270, 720);
+        scene = new Scene(mainLayout,1280,720);
         scene.getStylesheets().add(getClass().getResource("/Styles.css").toExternalForm());
-
-
     }
 
     public Scene getScene() {

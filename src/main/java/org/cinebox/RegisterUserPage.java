@@ -49,7 +49,10 @@ public class RegisterUserPage {
         });
 
         layout.getChildren().addAll(registerLabel,usernameField, passwordField, registerButton, inlogButton);
-        scene = new Scene(layout, 1280, 720);
+
+        // Create the scene and make it fullscreen
+        scene = new Scene(layout,1280,720);
+
         scene.getStylesheets().add(getClass().getResource("/Styles.css").toExternalForm());
     }
 

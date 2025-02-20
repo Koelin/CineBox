@@ -2,10 +2,7 @@ package org.cinebox;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -28,13 +25,30 @@ public class EditFilmPage {
         Button backButton = new Button("Terug naar Home");
         backButton.setOnAction(e -> applicationManager.showHomePage());
 
+        Label titleLabel = new Label("title");
         TextField titleField = new TextField(film.getTitle());
-        TextField descriptionField = new TextField(film.getDescription());
-        TextField genreField = new TextField(film.getGenre());
-        TextField directorField = new TextField(film.getDirector());
-        TextArea reviewTextArea = new TextArea(film.getReview());
-        TextField ratingField = new TextField(String.valueOf(film.getRating()));
 
+        Label descriptionLabel = new Label("description");
+        TextField descriptionField = new TextField(film.getDescription());
+
+        Label genreLabel = new Label("genre");
+        ChoiceBox<String> genreField = new ChoiceBox<>();
+        genreField.getItems().addAll("Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Fantasy",
+                "Historical", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "Western");
+        genreField.setValue(film.getGenre());
+
+        Label directorLabel = new Label("director");
+        TextField directorField = new TextField(film.getDirector());
+
+        Label reviewLabel = new Label("review");
+        TextArea reviewTextArea = new TextArea(film.getReview());
+
+        Label ratingLabel = new Label("rating");
+        ChoiceBox<String> ratingField = new ChoiceBox<>();
+        ratingField.getItems().addAll("1", "2", "3", "4", "5");
+        ratingField.setValue(String.valueOf(film.getRating()));
+
+        Label posterLabel = new Label("poster");
         posterImageView = new ImageView(film.getPoster());
         posterImageView.setFitWidth(200);
         posterImageView.setFitHeight(300);
@@ -55,10 +69,10 @@ public class EditFilmPage {
         saveFilmButton.setOnAction(e -> {
             film.setTitle(titleField.getText());
             film.setDescription(descriptionField.getText());
-            film.setGenre(genreField.getText());
+            film.setGenre(genreField.getValue());
             film.setDirector(directorField.getText());
             film.setReview(reviewTextArea.getText());
-            film.setRating(Integer.parseInt(ratingField.getText()));
+            film.setRating(Integer.parseInt(ratingField.getValue()));
             if (selectedImageFile != null) {
                 film.setPoster(new Image(selectedImageFile.toURI().toString()));
             }
@@ -68,7 +82,9 @@ public class EditFilmPage {
             FilmRepository.editFilm(film);
         });
 
-        layout.getChildren().addAll(editFilmLabel, backButton, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, selectImageButton, posterImageView, saveFilmButton);
+        layout.getChildren().addAll(editFilmLabel, backButton, titleLabel, titleField, descriptionLabel, descriptionField,
+                genreLabel, genreField, directorLabel, directorField, reviewLabel, reviewTextArea, ratingLabel,
+                ratingField, posterLabel, posterImageView, selectImageButton, saveFilmButton);
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
         scene = new Scene(layout, 1270, 720);

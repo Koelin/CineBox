@@ -79,21 +79,66 @@ public class FilmRepository {
         return films;
     }
 
-    // edit film by user
+
     public static void editFilm(Film film) {
-        String sql = "UPDATE Film SET title = ?, description = ?, director = ?, genre_id = ?, poster = ?, rating = ? WHERE id = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, film.getTitle());
-            stmt.setString(2, film.getDescription());
-            stmt.setString(3, film.getDirector());
-            stmt.setInt(4, film.getGenreId());
-            stmt.setBytes(5, film.getPosterBytes());
-            stmt.setInt(6, film.getRating());
-            stmt.setInt(7, film.getId());
-            stmt.executeUpdate();
+        String updateFilmSql = "UPDATE Film SET title = ?, description = ?, director = ?, genre_id = ?, poster = ?, rating = ? WHERE id = ?";
+        String updateReviewSql = "UPDATE Review SET review = ? WHERE film_id = ?";
+        String updateGenreSql = "UPDATE Genre SET name = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            // Update the film details
+            try (PreparedStatement stmt = conn.prepareStatement(updateFilmSql)) {
+                stmt.setString(1, film.getTitle());
+                stmt.setString(2, film.getDescription());
+                stmt.setString(3, film.getDirector());
+                stmt.setInt(4, film.getGenreId());
+                stmt.setBytes(5, film.getPosterBytes());
+                stmt.setInt(6, film.getRating());
+                stmt.setInt(7, film.getId());
+                stmt.executeUpdate();
+            }
+
+            // Update the review
+            try (PreparedStatement stmt = conn.prepareStatement(updateReviewSql)) {
+                stmt.setString(1, film.getReview());
+                stmt.setInt(2, film.getId());
+                stmt.executeUpdate();
+            }
+
+            // Update the genre
+            try (PreparedStatement stmt = conn.prepareStatement(updateGenreSql)) {
+                stmt.setString(1, film.getGenre());
+                stmt.setInt(2, film.getGenreId());
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void deleteFilm(int filmId) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            // Delete associated reviews
+            String deleteReviewsQuery = "DELETE FROM review WHERE film_id = ?";
+            try (PreparedStatement deleteReviewsStmt = connection.prepareStatement(deleteReviewsQuery)) {
+                deleteReviewsStmt.setInt(1, filmId);
+                deleteReviewsStmt.executeUpdate();
+            }
+
+            // Delete the film
+            String deleteFilmQuery = "DELETE FROM film WHERE id = ?";
+            try (PreparedStatement deleteFilmStmt = connection.prepareStatement(deleteFilmQuery)) {
+                deleteFilmStmt.setInt(1, filmId);
+                deleteFilmStmt.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }
+
+
+

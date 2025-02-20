@@ -8,6 +8,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) {
         ApplicationManager appManager = new ApplicationManager(stage);
         appManager.showRegisterUserPage();
+        stage.setMaximized(true);
     }
 
     public static void main(String[] args) {
