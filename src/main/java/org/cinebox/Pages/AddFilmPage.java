@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Pages;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -7,6 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import org.cinebox.*;
+import org.cinebox.Classes.Film;
+import org.cinebox.Classes.User;
+import org.cinebox.Repositories.FilmRepository;
+import org.cinebox.Repositories.GenreRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

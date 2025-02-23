@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Pages;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.cinebox.ApplicationManager;
+import org.cinebox.Classes.User;
+import org.cinebox.Repositories.UserRepository;
 
 public class LoginPage {
 
@@ -36,6 +38,13 @@ public class LoginPage {
         PasswordField passwordField = new PasswordField();
         passwordField.getStyleClass().add("textfield-password");
 
+        Label registerLabel = new Label("Don't have an account?");
+        registerLabel.getStyleClass().add("label-username");
+
+        Button registerButton = new Button("Register");
+        registerButton.getStyleClass().add("button-submit");
+        registerButton.setOnAction(e -> appManager.showRegisterUserPage());
+
 
         Button loginButton = new Button("Login");
         loginButton.getStyleClass().add("button-submit");
@@ -53,7 +62,7 @@ public class LoginPage {
             }
         });
 
-layout.getChildren().addAll(loginLabel, usernameLabel, usernameField, passwordLabel, passwordField, loginButton);
+layout.getChildren().addAll(loginLabel, usernameLabel, usernameField, passwordLabel, passwordField, loginButton, registerLabel, registerButton);
 
 
         scene = new Scene(layout, 1280, 720);

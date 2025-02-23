@@ -14,7 +14,10 @@
 //        return users.get(username);
 //    }
 //}
-package org.cinebox;
+package org.cinebox.Repositories;
+
+import org.cinebox.DatabaseConnection;
+import org.cinebox.Classes.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

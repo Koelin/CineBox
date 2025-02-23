@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Classes;
 
 import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;

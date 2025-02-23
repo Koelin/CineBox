@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Pages;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import org.cinebox.ApplicationManager;
+import org.cinebox.Classes.Film;
 
 public class DetailPage {
     private Scene scene;

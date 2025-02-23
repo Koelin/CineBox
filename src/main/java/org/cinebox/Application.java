@@ -8,7 +8,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) {
         ApplicationManager appManager = new ApplicationManager(stage);
-        appManager.showRegisterUserPage();
+        appManager.showLoginPage();
         stage.setTitle("Cinebox");
         stage.getIcons().add(new Image("LogoImage.jpg"));
     }

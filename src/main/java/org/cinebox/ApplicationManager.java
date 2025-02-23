@@ -1,6 +1,9 @@
 package org.cinebox;
 
 import javafx.stage.Stage;
+import org.cinebox.Classes.Film;
+import org.cinebox.Classes.User;
+import org.cinebox.Pages.*;
 
 public class ApplicationManager {
     private Stage stage;

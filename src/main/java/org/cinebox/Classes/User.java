@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Classes;
 
 import java.util.ArrayList;
 import java.util.List;

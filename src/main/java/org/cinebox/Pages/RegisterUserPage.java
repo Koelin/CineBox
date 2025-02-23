@@ -1,4 +1,4 @@
-package org.cinebox;
+package org.cinebox.Pages;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.cinebox.ApplicationManager;
+import org.cinebox.Classes.User;
+import org.cinebox.Repositories.UserRepository;
 
 public class RegisterUserPage {
     private Scene scene;
@@ -35,7 +38,7 @@ public class RegisterUserPage {
         Button registerButton = new Button("Registreren");
         registerButton.getStyleClass().add("button-submit");
 
-        Button inlogButton = new Button("Inloggen");
+        Button inlogButton = new Button("Log in");
         inlogButton.getStyleClass().add("button-submit");
 
         inlogButton.setOnAction(e -> appManager.showLoginPage());

@@ -1,4 +1,6 @@
-package org.cinebox;
+package org.cinebox.Repositories;
+
+import org.cinebox.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
