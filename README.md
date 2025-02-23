@@ -5,10 +5,9 @@ CineBox is a Java-based application for managing and viewing films. It allows us
 ## Features
 
 - User Registration and Login
-- Add Films with Details (Title, Description, Genre, Director, Review, Rating, Poster Image)
+- Add Films with Details
 - View Film Details
-- Scrollable Interface for Film Addition
-- Unique Username Enforcement
+
 
 ## Technologies Used
 
