@@ -22,10 +22,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository {
+
+
+    public static boolean usernameExists(String username) {
+        String query = "SELECT COUNT(*) FROM User WHERE username = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+
     public static void addUser(User user) {
-        String sql = "INSERT INTO User (username, password) VALUES (?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        String query = "INSERT INTO User (username, password) VALUES (?, ?)";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
             stmt.executeUpdate();

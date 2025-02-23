@@ -27,30 +27,47 @@ public class AddFilmPage {
         Label addFilmLabel = new Label("Add Film");
         addFilmLabel.getStyleClass().add("label-add-film-title");
 
-        Button backButton = new Button("Terug naar Home");
+        Button backButton = new Button("Home");
         backButton.getStyleClass().add("button-submit");
 
+        Label titleLabel = new Label("Title");
+        titleLabel.getStyleClass().add("label-add-film-title");
+
         TextField titleField = new TextField();
-        titleField.setPromptText("Titel");
+        titleField.setPromptText("Title");
         titleField.getStyleClass().add("textfield-add-film-title");
 
+        Label descriptionLabel = new Label("Description");
+        descriptionLabel.getStyleClass().add("label-add-film-description");
+
         TextField descriptionField = new TextField();
-        descriptionField.setPromptText("Beschrijving");
+        descriptionField.setPromptText("description");
         descriptionField.getStyleClass().add("textfield-add-film-description");
 
+        Label genreLabel = new Label("Genre");
+        genreLabel.getStyleClass().add("label-add-film-director");
 
         ChoiceBox<String> genreField = new ChoiceBox<>();
         genreField.getItems().addAll("Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Fantasy",
                                            "Historical", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "Western");
         genreField.setValue("Action");
 
+        Label directorLabel = new Label("Director");
+        directorLabel.getStyleClass().add("label-add-film-director");
+
         TextField directorField = new TextField();
         directorField.setPromptText("Regisseur");
         directorField.getStyleClass().add("textfield-add-film-director");
 
+        Label reviewLabel = new Label("Review");
+        reviewLabel.getStyleClass().add("label-add-film-director");
+
         TextArea reviewTextArea = new TextArea();
         reviewTextArea.setPromptText("Review");
         reviewTextArea.getStyleClass().add("text-area-add-film-description");
+
+        Label ratingLabel = new Label("Rating");
+        ratingLabel.getStyleClass().add("label-add-film-director");
 
         ChoiceBox<String> ratingField = new ChoiceBox<>();
         ratingField.getItems().addAll("1", "2", "3", "4", "5");
@@ -76,7 +93,7 @@ public class AddFilmPage {
             }
         });
 
-        Button addFilmButton = new Button("Film Toevoegen");
+        Button addFilmButton = new Button("Add film");
         addFilmButton.getStyleClass().add("button-submit");
         addFilmButton.setOnAction(e -> {
             String title = titleField.getText();
@@ -143,10 +160,14 @@ public class AddFilmPage {
             applicationManager.showHomePage();
         });
 
-        layout.getChildren().addAll(addFilmLabel, titleField, descriptionField, genreField, directorField, reviewTextArea, ratingField, selectImageButton, posterImageView, addFilmButton,backButton);
+       layout.getChildren().addAll(addFilmLabel, titleLabel, titleField, descriptionLabel, descriptionField, genreLabel, genreField, directorLabel, directorField, reviewLabel, reviewTextArea, ratingLabel, ratingField, selectImageButton, posterImageView, addFilmButton, backButton);
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
-        scene = new Scene(layout, 1270, 720);
+        ScrollPane scrollPane = new ScrollPane(layout);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scene = new Scene(scrollPane, 1270, 720);
+
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles.css")).toExternalForm());
 
     }

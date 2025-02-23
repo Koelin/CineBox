@@ -46,14 +46,16 @@ public class HomePage {
         filmRow.setPadding(new Insets(10));
         filmRow.getStyleClass().add("film-row");
 
-        for (Film film : films) {
+        // Display the films
+        for (Film film : films) { // Loop through the films
             VBox filmBox = new VBox(10);
             filmBox.setPadding(new Insets(10));
             filmBox.getStyleClass().add("film-box");
 
+            // Display the poster
             Image poster = film.getPoster();
             ImageView posterImageView = new ImageView();
-            if (poster != null) {
+            if (poster != null) { // If the poster exists
                 posterImageView.setImage(poster);
                 posterImageView.setFitWidth(150);
                 posterImageView.setFitHeight(150);
@@ -85,7 +87,7 @@ public class HomePage {
             filmBox.getChildren().addAll(posterImageView, filmTitleLabel, filmDirectorLabel, detailButton, editButton, deleteButton);
             filmRow.getChildren().add(filmBox);
 
-            if (filmRow.getChildren().size() == 3) { // Adjust the number of films per row as needed
+            if (filmRow.getChildren().size() == 5) { // If the row is full
                 mainLayout.getChildren().add(filmRow);
                 filmRow = new HBox(10);
                 filmRow.setPadding(new Insets(10));

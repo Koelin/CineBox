@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -20,14 +21,16 @@ public class RegisterUserPage {
         Label registerLabel = new Label("Registreren");
         registerLabel.getStyleClass().add("label-login-title");
 
-
         TextField usernameField = new TextField();
-        usernameField.setPromptText("Gebruikersnaam");
+        usernameField.setPromptText("Username");
         usernameField.getStyleClass().add("textfield-username");
 
-        TextField passwordField = new TextField();
-        passwordField.setPromptText("Wachtwoord");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
         passwordField.getStyleClass().add("textfield-password");
+
+        Label errorLabel = new Label();
+        errorLabel.getStyleClass().add("label-error");
 
         Button registerButton = new Button("Registreren");
         registerButton.getStyleClass().add("button-submit");
@@ -41,18 +44,20 @@ public class RegisterUserPage {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            User user = new User(1, username, password);
-            UserRepository.addUser(user);
+            if (UserRepository.usernameExists(username)) {
+                errorLabel.setText("User already exists");
 
-            appManager.setLoggedInUser(user);
-            appManager.showHomePage();
+            } else {
+                User user = new User(1, username, password);
+                UserRepository.addUser(user);
+                appManager.setLoggedInUser(user);
+                appManager.showHomePage();
+            }
         });
 
-        layout.getChildren().addAll(registerLabel,usernameField, passwordField, registerButton, inlogButton);
+        layout.getChildren().addAll(registerLabel, usernameField, passwordField, registerButton, inlogButton, errorLabel);
 
-        // Create the scene and make it fullscreen
-        scene = new Scene(layout,1280,720);
-
+        scene = new Scene(layout, 1280, 720);
         scene.getStylesheets().add(getClass().getResource("/Styles.css").toExternalForm());
     }
 

@@ -82,6 +82,7 @@ public class EditFilmPage {
 
         Button saveFilmButton = new Button("Film Opslaan");
         saveFilmButton.getStyleClass().add("button-edit-film-submit");
+        // Save the film
         saveFilmButton.setOnAction(e -> {
             film.setTitle(titleField.getText());
             film.setDescription(descriptionField.getText());
@@ -94,7 +95,7 @@ public class EditFilmPage {
             }
 
 
-            FilmRepository.editFilm(film);
+            FilmRepository.editFilm(film); // Edit the film
             applicationManager.showHomePage();
 
 

@@ -42,12 +42,12 @@ public class LoginPage {
         loginButton.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
-            User user = UserRepository.getUser(username);
-            if (user != null && user.getPassword().equals(password)) {
-                appManager.setLoggedInUser(user);
+            User user = UserRepository.getUser(username); // Get the user by username
+            if (user != null && user.getPassword().equals(password)) { // If the user exists and the password is correct
+                appManager.setLoggedInUser(user); // Set the logged in user
                 appManager.showHomePage();
             } else {
-                Label errorLabel = new Label("Invalid username or password");
+                Label errorLabel = new Label("Invalid username or password"); // Show an error message
                 errorLabel.getStyleClass().add("label-error");
                 layout.getChildren().add(errorLabel);
             }
