@@ -66,6 +66,7 @@ public class AddFilmPage {
         Button selectImageButton = new Button("Selecteer Afbeelding");
         selectImageButton.getStyleClass().add("button-submit");
         selectImageButton.setOnAction(e -> {
+            // Open a file chooser dialog to select an image file
             FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
             selectedImageFile = fileChooser.showOpenDialog(applicationManager.getStage());
@@ -101,6 +102,7 @@ public class AddFilmPage {
                 }
             }
 
+            // Display an error message if the image file could not be loaded
             if (posterBytes == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -110,6 +112,7 @@ public class AddFilmPage {
                 return;
             }
 
+            // Get the ID of the logged in user
             User loggedInUser = applicationManager.getLoggedInUser();
             if (loggedInUser == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -123,6 +126,7 @@ public class AddFilmPage {
             int userId = loggedInUser.getId();
             int genreId = GenreRepository.getGenreIdByName(genre);
 
+            // Display an error message if the genre does not exist (should never happen)
             if (genreId == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -132,6 +136,7 @@ public class AddFilmPage {
                 return;
             }
 
+            // Create a new film object and add it to the database
             Film film = new Film(title, description, director, genreId, userId, posterBytes, genre, review, rating);
             FilmRepository.addFilm(film);
 

@@ -48,6 +48,7 @@ public class LoginPage {
                 appManager.showHomePage();
             } else {
                 Label errorLabel = new Label("Invalid username or password");
+                errorLabel.getStyleClass().add("label-error");
                 layout.getChildren().add(errorLabel);
             }
         });

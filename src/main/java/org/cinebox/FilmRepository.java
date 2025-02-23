@@ -9,6 +9,7 @@ import java.util.List;
 
 public class FilmRepository {
 
+    // Get all films from the database
     public static void addFilm(Film film) {
         String sql = "INSERT INTO Film (title, description, director, genre_id, user_id, poster, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -36,6 +37,7 @@ public class FilmRepository {
 
 
 
+    // Get the ID of the last inserted film
     private static int getLastInsertedFilmId(Connection conn) throws SQLException {
         String sql = "SELECT LAST_INSERT_ID()";
         try (PreparedStatement stmt = conn.prepareStatement(sql);
@@ -48,6 +50,7 @@ public class FilmRepository {
         }
     }
 
+    // Get all films from the database from the user
     public static List<Film> getFilmsByUser(int userId) {
         List<Film> films = new ArrayList<>();
         String sql = "SELECT f.id, f.title, f.description, f.director, f.genre_id, f.user_id, f.poster, g.name AS genre, r.review, f.rating " +
@@ -80,10 +83,11 @@ public class FilmRepository {
     }
 
 
+    // edit the film
     public static void editFilm(Film film) {
         String updateFilmSql = "UPDATE Film SET title = ?, description = ?, director = ?, genre_id = ?, poster = ?, rating = ? WHERE id = ?";
         String updateReviewSql = "UPDATE Review SET review = ? WHERE film_id = ?";
-        String updateGenreSql = "UPDATE Genre SET name = ? WHERE id = ?";
+
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             // Update the film details
@@ -102,13 +106,6 @@ public class FilmRepository {
             try (PreparedStatement stmt = conn.prepareStatement(updateReviewSql)) {
                 stmt.setString(1, film.getReview());
                 stmt.setInt(2, film.getId());
-                stmt.executeUpdate();
-            }
-
-            // Update the genre
-            try (PreparedStatement stmt = conn.prepareStatement(updateGenreSql)) {
-                stmt.setString(1, film.getGenre());
-                stmt.setInt(2, film.getGenreId());
                 stmt.executeUpdate();
             }
 

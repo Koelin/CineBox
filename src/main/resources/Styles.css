@@ -8,7 +8,7 @@
     -fx-font-family: Arial;
     -fx-font-weight: bold;
     -fx-font-size: 24px;
-    -fx-text-fill: #333333;
+    -fx-text-fill: #ffffff;
 }
 
 .button-register {
@@ -49,13 +49,13 @@
     -fx-font-family: Arial;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-text-fill: #333333;
+    -fx-text-fill: #ffffff;
 }
 
 .label-film-director {
     -fx-font-family: Arial;
     -fx-font-size: 14px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #ffffff;
 }
 
 .button-detail {
@@ -76,19 +76,19 @@
     -fx-font-family: Arial;
     -fx-font-weight: bold;
     -fx-font-size: 24px;
-    -fx-text-fill: #333333;
+    -fx-text-fill: #ffffff;
 }
 
 .label-detail-director {
     -fx-font-family: Arial;
     -fx-font-size: 16px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #ffffff;
 }
 
 .label-detail-description {
     -fx-font-family: Arial;
     -fx-font-size: 14px;
-    -fx-text-fill: #666666;
+    -fx-text-fill: #ffffff;
 }
 
 .poster-image-detail {
@@ -264,3 +264,69 @@
 }
 
 /* EditFilmPage styling */
+
+.label-edit-film-title {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 28px;
+    -fx-text-fill: #ffffff;
+}
+
+.label-edit-film-director, .label-edit-film-description {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+.textfield-edit-film-title, .textfield-edit-film-director, .textfield-edit-film-description {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+}
+
+.text-area-edit-film-description {
+    -fx-font-size: 14px;
+    -fx-max-width: 200px;
+    -fx-max-height: 100px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.textfield-edit-film-title:focused, .textfield-edit-film-director:focused, .textfield-edit-film-description:focused {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: transparent;
+}
+
+.textfield-edit-film-title:hover, .textfield-edit-film-director:hover, .textfield-edit-film-description:hover {
+    -fx-border-color: #4CAF50;
+    -fx-background-color: transparent;
+}
+
+
+
+.button-edit-film-submit {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-edit-film-submit:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Error styling */
+.label-error {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}

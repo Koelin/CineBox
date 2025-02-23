@@ -19,7 +19,7 @@ public class HomePage {
         mainLayout.setPadding(new Insets(20));
         mainLayout.getStyleClass().add("root");
 
-        Label homeLabel = new Label("Welcome" + applicationManager.getLoggedInUser().getUsername() + "to Cinebox" );
+        Label homeLabel = new Label("Welcome " + applicationManager.getLoggedInUser().getUsername() + " to Cinebox" );
         homeLabel.getStyleClass().add("label-title");
         mainLayout.getChildren().add(homeLabel);
 
